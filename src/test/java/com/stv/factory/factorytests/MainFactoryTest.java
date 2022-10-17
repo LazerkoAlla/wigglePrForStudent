@@ -2,17 +2,29 @@ package com.stv.factory.factorytests;
 
 import com.stv.factory.factorypages.LoginPage;
 import com.stv.factory.factorypages.MainFactoryPage;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
 
 public class MainFactoryTest extends BasicFactoryTest {
 
     MainFactoryPage mainFactoryPage = new MainFactoryPage();
     LoginPage loginPage = new LoginPage();
+
+    @DataProvider()
+    public Object[][] testDataEmail() {
+        return new Object[][]{
+                new Object[]{"123@mail.ru"}
+        };
+    }
+
+    @DataProvider()
+    public Object[][] testDataEmailAndPassword() {
+        return new Object[][]{
+                new Object[]{"123@mail.ru", "123"}
+        };
+    }
 
     @Test (description = "Assert the main page is loaded and account icon is visible")
     public void assertAccountIconIsDisplayed() {
@@ -24,27 +36,38 @@ public class MainFactoryTest extends BasicFactoryTest {
     public void assertLoginPageOpened() {
         mainFactoryPage.clickOnTrustButton();
         mainFactoryPage.clickOnAccountLink();
-        Assert.assertEquals(new LoginPage().isLoginContainerDisplayed(), true, "Login page isn't loaded properly");
+        Assert.assertEquals(loginPage.isLoginContainerDisplayed(), true, "Login page isn't loaded properly");
     }
 
+    @Test (description = "Assert that email form is displayed", dependsOnMethods = "assertLoginPageOpened")
+    public void assertEmailFormIsDispayed() {
+        boolean actualResult = loginPage.isEmailFormDisplayed();
+        Assert.assertTrue(actualResult, "Email form isn't visible");
+    }//отображает форму ввода имейла
 
-    @Test(description = "Assert email entering validation")
-    public void addOldCustomer() throws InterruptedException {
-        mainFactoryPage.clickOnTrustButton();
-        mainFactoryPage.clickOnAccountLink();
-        mainFactoryPage.enterEmail("1111@gmail.com");
-        mainFactoryPage.enterPassword("1111110");
-        Assert.assertEquals(new MainFactoryPage().isEmailFormDisplayed(), true, "Email isn't entered");
+    @Test(description = "Assert email entering validation",dependsOnMethods = "assertEmailFormIsDispayed", dataProvider = "testDataEmailAndPassword")
+    public void addOldCustomer(String email, String password) throws InterruptedException {
+        loginPage.enterEmail(email);
+        loginPage.enterPassword(password);
+        Assert.assertEquals(loginPage.isEmailFormDisplayed(), true, "Email isn't entered");
     } //вводит и удаляет данные в полях
 
-    @Test (description = "Assert email entering validation")
-    public void addNewCustomer() throws InterruptedException {
-        mainFactoryPage.clickOnTrustButton();
-        mainFactoryPage.clickOnAccountLink();
-        mainFactoryPage.enterNewCustomerEmailAddressField("1111@gmail.com");
-        mainFactoryPage.clickContinueNewCustomerButton();
-        Assert.assertEquals(new MainFactoryPage().isEmailFormDisplayed(), true, "Email isn't entered");
+    @Test(description = "Assert that password form is displayed", dependsOnMethods = "assertLoginPageOpened")
+    public void assertPasswordFormIsDispayed() {
+        boolean actualResult = loginPage.isPasswordFormDisplayed();
+        Assert.assertTrue(actualResult, "Password form isn't visible");
+    }//отображает форму ввода пароля
+
+    @Test(description = "Assert that password checkbox is displayed", dependsOnMethods = "assertLoginPageOpened")
+    public void assertPasswordCheckboxIsDispayed() {
+        boolean actualResult = loginPage.isPasswordCheckBoxDisplayed();
+        Assert.assertTrue(actualResult, "Password checkbox isn't visible");
+    }//отображает форму ввода пароля
+
+    @Test (description = "Assert email entering validation",dependsOnMethods = {"assertPasswordFormIsDispayed", "assertPasswordCheckboxIsDispayed"}, dataProvider = "testDataEmail")
+    public void addNewCustomer(String email) throws InterruptedException {
+        loginPage.enterNewCustomerEmailAddressField(email);
+        loginPage.clickContinueNewCustomerButton();
+        Assert.assertEquals(loginPage.isEmailFormDisplayed(), true, "Email isn't entered");
     } //вводит и удаляет данные в полях, затем нажимает кнопку
-
-
 }
