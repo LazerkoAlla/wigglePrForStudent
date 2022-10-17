@@ -58,7 +58,7 @@ public class LoginPage extends FactoryPage {
         emailAddressField.clear();
     }
 
-    public void clickContinueNewCustomerButton(){ //вырезать
+    public void clickContinueNewCustomerButton(){
         continueNewCustomerButton.click();
 
     } //жмет на кнопку после удления и введения данных
