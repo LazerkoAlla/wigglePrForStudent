@@ -1,4 +1,4 @@
-package com.stv.factory.factorytests;
+package com.stv.bdd.steps;
 
 import com.stv.framework.core.drivers.Driver;
 import org.openqa.selenium.WebDriver;
@@ -9,12 +9,11 @@ import java.util.concurrent.TimeUnit;
 
 import static com.stv.framework.core.lib.WigglePageURLs.START_URL;
 
-public class BasicFactoryTest {
+public class BasicBddTest {
     public static WebDriver getDriver() {
         return Driver.getDriver();
     }
 
-    @BeforeClass(description = "Start browser")
     public void setUp() {
         WebDriver driver = getDriver();
         driver.get(START_URL);
@@ -22,8 +21,7 @@ public class BasicFactoryTest {
         driver.manage().window().maximize();
     }
 
-    @AfterClass
-    public void afterClass() throws Exception {
+    public void quit() {
         getDriver().quit();
     }
 }

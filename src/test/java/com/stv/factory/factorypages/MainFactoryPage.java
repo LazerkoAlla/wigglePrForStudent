@@ -23,9 +23,4 @@ public class MainFactoryPage extends FactoryPage {
     public void clickOnTrustButton(){
         trustButton.click();
     }
-
-
-
-
-
 }

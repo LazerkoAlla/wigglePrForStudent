@@ -14,19 +14,19 @@ public class LoginPage extends FactoryPage {
     private WebElement continueNewCustomerButton;
 
     @FindBy(id = "LogOnModel_UserName")
-    private WebElement continueEmailAddress;//поле имейл
+    private WebElement continueEmailAddress;//emeil field
 
     @FindBy(id = "LogOnModel_Password")
-    private WebElement continuePassword;// пароль
+    private WebElement continuePassword;//password
 
     @FindBy(id = "qa-login")
-    private WebElement continueCustomerButton;// кнопка
+    private WebElement continueCustomerButton;//button
 
     @FindBy(id = "LogOnModel_UserName-error")
     private WebElement emailValidationMessage;
 
     @FindBy(id="passwordToggle")
-    private WebElement passwordCheckBox;  //поле пароля
+    private WebElement passwordCheckBox;  //password field
 
     public boolean isLoginContainerDisplayed(){ //поле пароля
         return loginContainer.isDisplayed();
@@ -53,17 +53,15 @@ public class LoginPage extends FactoryPage {
     }
 
     public void enterNewCustomerEmailAddressField(String s) {
-
         emailAddressField.sendKeys(s);
         emailAddressField.clear();
     }
 
     public void clickContinueNewCustomerButton(){
         continueNewCustomerButton.click();
+    } //clicking on the button after entering and deleting data
 
-    } //жмет на кнопку после удления и введения данных
-
-    public void enterEmail(String email) { //вырезать
+    public void enterEmail(String email) {
         continueEmailAddress.sendKeys(email);
         continueEmailAddress.clear();
     }
@@ -76,5 +74,4 @@ public class LoginPage extends FactoryPage {
     public void clickContinueOldCustomerButton(){
         continueCustomerButton.click();
     }
-
 }
