@@ -60,7 +60,6 @@ public class IndividualTaskSteps extends BasicFactoryTest {
     @And("the User clicks on add to Basket button")
     public void clickAddToBasketButton() {
         brandPage.addBasketButton();
-//        brandPage.isBasketDisplayed();
     }
 
     @And("the User clicks on continue Shopping button")
