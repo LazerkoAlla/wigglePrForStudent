@@ -32,14 +32,6 @@ public class LoginPage extends FactoryPage {
         return loginContainer.isDisplayed();
     }
 
-    public String getEmailValidationMessage() {
-        try {
-            return emailValidationMessage.getText();
-        } catch (Exception e) {
-            return "";
-        }
-    }
-
     public boolean isPasswordFormDisplayed() {
         return continuePassword.isDisplayed();
     }

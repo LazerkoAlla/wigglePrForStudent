@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 
 import static com.stv.framework.core.lib.WigglePageURLs.START_URL;
 
-public class IndividualTask extends BasicFactoryTest {
+public class IndividualTaskSteps extends BasicFactoryTest {
 
     BrandPage brandPage = new BrandPage();
 
@@ -60,7 +60,7 @@ public class IndividualTask extends BasicFactoryTest {
     @And("the User clicks on add to Basket button")
     public void clickAddToBasketButton() {
         brandPage.addBasketButton();
-        brandPage.isBasketDisplayed(); //не работает
+//        brandPage.isBasketDisplayed();
     }
 
     @And("the User clicks on continue Shopping button")

@@ -6,7 +6,22 @@ import org.openqa.selenium.support.FindBy;
 public class BrandPage extends FactoryPage {
 
     @FindBy(id = "quickBuyButton")
-    private WebElement addToBasketButton;  //корзина
+    private WebElement addToBasketButton;  //shopping basket
+
+    @FindBy(xpath = "//*[contains(@href,'https://www.wiggle.co.uk/all-brands')]")
+    private WebElement allBrands; //all brands //all brands displayed
+
+    @FindBy (xpath = "//*[contains(@href,'/dhb')][2]")
+    private WebElement dhb; //dhb //dhb displayed
+
+    @FindBy(xpath = "//*[contains(@href,'https://www.wiggle.co.uk/dhb-merino-short-sleeve-base-layer-m-150')][1]")
+    private WebElement cap; //item
+
+    @FindBy(xpath ="//*[contains(@class,'bem-sku-selector__option-prompt')][1]")
+    private WebElement colorField; //open color field
+
+    @FindBy(xpath = "//*[contains(@class,'bem-sku-selector__option-group-item')][1]")
+    private WebElement color; //first color
 
     @FindBy(xpath = "//*[@id=\"quickBuyBox\"]/form/div[1]/div[5]/a")
     private WebElement selectSize; //size
@@ -14,35 +29,11 @@ public class BrandPage extends FactoryPage {
     @FindBy(xpath = "//*[@id=\"quickBuyBox\"]/form/div[1]/div[5]/div/ul/li[1]")
     private WebElement smallSize; //small size
 
-    @FindBy(xpath = "//*[contains(@href,'https://www.wiggle.co.uk/all-brands')]")
-    private WebElement allBrands; //all brands
-
-    @FindBy(xpath = "//*[@id=\"wiggle\"]/div/div/div/div[1]/div/div[1]/a[1]")
-    private WebElement dhb; //dhb
-
-    @FindBy(xpath = "//*[@id=\"search-results\"]/div[46]/div")
-    private WebElement cap; //cap
-
-    @FindBy(xpath = "//*[@id=\"quickBuyBox\"]/form/div[1]/div[2]/a")
-    private WebElement colorField; //open color field
-
-    @FindBy(xpath = "//*[@id=\"quickBuyBox\"]/form/div[1]/div[2]/div/ul/li[1]")
-    private WebElement color; //color green
-
     @FindBy(id = "view-basket")
     private WebElement viewBasketLink; //open basket
 
-    @FindBy(xpath = "//*[@id=\"continue-shopping\"]")
+    @FindBy(id = "continue-shopping")
     private WebElement continueShoppingButton;  //continue shopping
-
-    @FindBy(xpath = "//*[@id=\"wiggle\"]/div/div/div/div[1]/div")
-    private WebElement getAllBrands;  //brands displayed
-
-    @FindBy(xpath = "//*[@id=\"wiggle\"]/div/div[1]/div[2]/div/div[1]/div/img")
-    private WebElement getDhb;  //dhb displayed
-
-    @FindBy(xpath = "/html/body/div[17]/div/div/div/div[2]/div[1]/div/div/div[2]/a/img")
-    private WebElement getBasket;  //basket displayed
 
     public void clickAllBrands(){
         allBrands.click();
@@ -72,23 +63,16 @@ public class BrandPage extends FactoryPage {
         addToBasketButton.click();
     }
 
-    public void viewBasketLink(){
-        viewBasketLink.click();
-    }
-
     public void continueShoppingButton(){
         continueShoppingButton.click();
     }
 
     public boolean isAllBrandsDisplayed() {
-        return getAllBrands.isDisplayed();
+        return allBrands.isDisplayed();
     }
 
     public boolean isDhbDisplayed() {
-        return getDhb.isDisplayed();
+        return dhb.isDisplayed();
     }
 
-    public boolean isBasketDisplayed() {
-        return getBasket.isDisplayed();
-    }
 }

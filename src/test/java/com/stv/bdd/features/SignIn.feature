@@ -1,6 +1,6 @@
 Feature: sign in
 
-  Scenario: 01 open the main project page
+  Scenario: 01 Open the main project page
     Given Main page is loaded
     When  Click on account link
     Then Account page is loaded

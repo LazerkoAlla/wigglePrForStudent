@@ -1,6 +1,6 @@
 Feature: individual task
 
-  Scenario: 03 Selection of a product
+  Scenario: 03 selection of a product
     Given Main page is loaded
     When the User clicks on all brands link
     Then all brands page is visible

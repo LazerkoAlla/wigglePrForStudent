@@ -14,9 +14,10 @@ import org.testng.Assert;
 
 import java.util.concurrent.TimeUnit;
 
+import static com.stv.factory.factorytests.BasicFactoryTest.getDriver;
 import static com.stv.framework.core.lib.WigglePageURLs.START_URL;
 
-public class SignInSteps extends BasicFactoryTest {
+public class SignInSteps {
     MainFactoryPage mainFactoryPage = new MainFactoryPage();
     LoginPage loginPage = new LoginPage();
 
