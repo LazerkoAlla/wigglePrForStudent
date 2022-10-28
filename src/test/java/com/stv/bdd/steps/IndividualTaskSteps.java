@@ -1,21 +1,13 @@
 package com.stv.bdd.steps;
 
 import com.stv.factory.factorypages.BrandPage;
-import com.stv.factory.factorypages.MainFactoryPage;
-import com.stv.factory.factorypages.LoginPage;
 import com.stv.factory.factorytests.BasicFactoryTest;
 
-import com.stv.framework.core.drivers.Driver;
+
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
 
-import java.util.concurrent.TimeUnit;
-
-import static com.stv.framework.core.lib.WigglePageURLs.START_URL;
 
 public class IndividualTaskSteps extends BasicFactoryTest {
 

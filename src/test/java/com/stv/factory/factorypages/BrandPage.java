@@ -8,25 +8,28 @@ public class BrandPage extends FactoryPage {
     @FindBy(id = "quickBuyButton")
     private WebElement addToBasketButton;  //shopping basket
 
-    @FindBy(xpath = "//*[contains(@href,'https://www.wiggle.co.uk/all-brands')]")
+    @FindBy(xpath = "//a[@class='bem-footer__link'][contains(text(),'All Brands')]")
     private WebElement allBrands; //all brands //all brands displayed
 
-    @FindBy (xpath = "//*[contains(@href,'/dhb')][2]")
+    @FindBy (xpath = "//*[contains(@href,'/dhb')][contains(text(),'dhb')]")
     private WebElement dhb; //dhb //dhb displayed
 
-    @FindBy(xpath = "//*[contains(@href,'https://www.wiggle.co.uk/dhb-merino-short-sleeve-base-layer-m-150')][1]")
+    @FindBy(xpath = "//a[contains(@class,'bem-product-thumb__image-link--grid')][contains(@data-ga-label,'Position 45')]"+
+    "[contains(@title,'dhb Merino Short Sleeve Base Layer (M_150)')]")
     private WebElement cap; //item
 
-    @FindBy(xpath ="//*[contains(@class,'bem-sku-selector__option-prompt')][1]")
+    @FindBy(xpath ="//div[contains(@class,'bem-sku-selector__option sku-items-parent qa-colour-select')]" +
+            "//a[@class='bem-sku-selector__option-prompt'][contains(text(),'Please select')]")
     private WebElement colorField; //open color field
 
-    @FindBy(xpath = "//*[contains(@class,'bem-sku-selector__option-group-item')][1]")
+    @FindBy(xpath = "//li[@title='Grey Marl']")
     private WebElement color; //first color
 
-    @FindBy(xpath = "//*[@id=\"quickBuyBox\"]/form/div[1]/div[5]/a")
+    @FindBy(xpath = "//div[contains(@class,'bem-sku-selector__option')][contains(@data-colour,'Grey Marl')]" +
+            "//a[@class='bem-sku-selector__option-prompt']")
     private WebElement selectSize; //size
 
-    @FindBy(xpath = "//*[@id=\"quickBuyBox\"]/form/div[1]/div[5]/div/ul/li[1]")
+    @FindBy(xpath = "//li[@title='Extra Small']")
     private WebElement smallSize; //small size
 
     @FindBy(id = "view-basket")
